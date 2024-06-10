@@ -1,5 +1,6 @@
 package com.gamingsphere.Server.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
@@ -16,17 +17,33 @@ public class User {
     private String password;
     private String profilePicture;
     private String bio;
-    private List<String> groups;
+    private List<Group> groups;
+    private List<Post> posts;
+    private List<String> games;
 
     // Constructor
-    public User(String id, String username, String email, String password, String profilePicture, String bio, List<String> groups) {
+    public User(String id, String username, String email, String password, String profilePicture, String bio) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
         this.profilePicture = profilePicture;
         this.bio = bio;
-        this.groups = groups;
+        this.groups = new ArrayList<>();
+        this.posts = new ArrayList<>();
+        this.games = new ArrayList<>();
+    }
+    // Constructor
+    public User(String id, String username, String email, String password, String profilePicture, String bio, List<String> games) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.profilePicture = profilePicture;
+        this.bio = bio;
+        this.groups = new ArrayList<>();
+        this.posts = new ArrayList<>();
+        this.games = games;
     }
 
     // Getters
@@ -54,8 +71,16 @@ public class User {
         return bio;
     }
 
-    public List<String> getGroups() {
+    public List<Group> getGroups() {
         return groups;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public List<String> getGames() {
+        return games;
     }
 
     // Setters
@@ -83,7 +108,17 @@ public class User {
         this.bio = bio;
     }
 
-    public void setGroups(List<String> groups) {
+    public void setGroups(List<Group> groups) {
         this.groups = groups;
     }
+
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
+    public void setGames(List<String> games) {
+        this.games = games;
+    }
+
 }
