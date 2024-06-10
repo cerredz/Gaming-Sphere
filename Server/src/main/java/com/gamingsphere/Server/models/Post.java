@@ -14,6 +14,7 @@ public class Post {
     private String id;
     private User user;
     private Group group;
+    private String description;
     private List<Reply> replies;
     private List<String> tags;
     @CreatedDate
@@ -52,6 +53,14 @@ public class Post {
 
     public void setGroup(Group group) {
         this.group = group;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public List<Reply> getReplies() {

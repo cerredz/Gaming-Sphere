@@ -1,9 +1,13 @@
 package com.gamingsphere.Server.service;
 import java.util.List;
 import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
 import com.gamingsphere.Server.models.Group;
 import com.gamingsphere.Server.respositories.GroupRepository;
 
+@Service
 public class GroupService {
     private final GroupRepository groupRepository;
 
