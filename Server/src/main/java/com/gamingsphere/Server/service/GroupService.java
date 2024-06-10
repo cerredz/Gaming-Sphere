@@ -27,22 +27,22 @@ public class GroupService {
         groupRepository.insert(group);
     }
 
-    public void deleteGroup(String id) {
-        groupRepository.deleteById(id);
-    }
-
     public void updateGroup(Group group, String id) {
         Group savedGroup = groupRepository.findById(id)
                                       .orElseThrow(() -> new RuntimeException(String.format("Cannot Find Group By ID %s", id)));
        savedGroup.setGame(group.getGame());
        savedGroup.setUserIds(group.getUserIds()); 
     }
+    
+    public void deleteGroup(String id) {
+        groupRepository.deleteById(id);
+    }
 
     // return all of the user information of a particular group
-    public List<String> getGroupUsersIds(String id) {
-        Group group = groupRepository.findById(id)
-                                      .orElseThrow(() -> new RuntimeException(String.format("Cannot Find Group By ID %s", id)));
+    public List<String> getGroupUsersIds(Group group) {
+        Group savedGroup = groupRepository.findById(group.getId())
+                                      .orElseThrow(() -> new RuntimeException(String.format("Cannot Find Group By ID %s", group.getId())));
     
-        return group.getUserIds();
+        return savedGroup.getUserIds();
     }
 }
