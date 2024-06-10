@@ -35,6 +35,9 @@ public class UserService {
         savedUser.setPassword(user.getPassword());
         savedUser.setProfilePicture(user.getProfilePicture());
         savedUser.setUsername(user.getUsername());
+        savedUser.setGroups(user.getGroups());
+        savedUser.setPosts(user.getPosts());
+        savedUser.setGames(user.getGames());
         userRepository.save(savedUser);
     }
 

@@ -1,9 +1,6 @@
 package com.gamingsphere.Server.controllers;
-
 import java.util.List;
 import java.util.Optional;
-
-import org.apache.catalina.connector.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -39,12 +36,6 @@ public class GroupController {
         return ResponseEntity.ok(group);
     }
 
-    @GetMapping("/get/users")
-    public ResponseEntity<List<String>> getGroupUsersIds(@RequestBody Group group) {
-        List<String> userIds = groupService.getGroupUsersIds(group);
-        return ResponseEntity.ok(userIds);
-    }
-
     @PostMapping("/add")
     public ResponseEntity<Void> addGroup(@RequestBody Group group) {
         groupService.addGroup(group);
@@ -62,6 +53,4 @@ public class GroupController {
         groupService.deleteGroup(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
-
-
 }

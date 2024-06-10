@@ -1,11 +1,7 @@
 package com.gamingsphere.Server.service;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 import com.gamingsphere.Server.models.Group;
-import com.gamingsphere.Server.models.User;
 import com.gamingsphere.Server.respositories.GroupRepository;
 
 public class GroupService {
@@ -31,18 +27,17 @@ public class GroupService {
         Group savedGroup = groupRepository.findById(id)
                                       .orElseThrow(() -> new RuntimeException(String.format("Cannot Find Group By ID %s", id)));
        savedGroup.setGame(group.getGame());
-       savedGroup.setUserIds(group.getUserIds()); 
+       savedGroup.setUsers(group.getUsers());
+       savedGroup.setPosts(group.getPosts()); 
+       savedGroup.setDescription(group.getDescription());
+       savedGroup.setTags(group.getTags());
+       savedGroup.setImgUrl(group.getImgUrl());
+       savedGroup.setMemberCount(group.getMemberCount());
+       groupRepository.save(savedGroup);
     }
     
     public void deleteGroup(String id) {
         groupRepository.deleteById(id);
     }
-
-    // return all of the user information of a particular group
-    public List<String> getGroupUsersIds(Group group) {
-        Group savedGroup = groupRepository.findById(group.getId())
-                                      .orElseThrow(() -> new RuntimeException(String.format("Cannot Find Group By ID %s", group.getId())));
     
-        return savedGroup.getUserIds();
-    }
 }
