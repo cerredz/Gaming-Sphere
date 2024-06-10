@@ -21,11 +21,11 @@ public class Post {
     private LocalDateTime createdAt;    
 
     // constructor
-    public Post(String id, User user, Group group, List<String> tags, LocalDateTime createdAt) {
+    public Post(String id, User user, Group group, List<String> tags, LocalDateTime createdAt, List<Reply> replies) {
         this.id = id;
         this.user = user;
         this.group = group;
-        this.replies = new ArrayList<>();
+        this.replies = replies;
         this.tags = tags;
         this.createdAt = createdAt;
     }

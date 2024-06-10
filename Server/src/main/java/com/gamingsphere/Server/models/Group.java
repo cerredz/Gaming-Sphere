@@ -1,5 +1,6 @@
 package com.gamingsphere.Server.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
@@ -18,9 +19,15 @@ public class Group {
     private String img_url;
     private Integer member_count;
 
-    public Group(String id, String game) {
+    public Group(String id, String game, String description, String img_url, Integer member_count, List<Post> posts, List<User> users, List<String> tags) {
         this.id = id;
         this.game = game;
+        this.description = description;
+        this.img_url = img_url;
+        this.member_count = member_count;
+        this.posts = posts;
+        this.users = users;
+        this.tags = tags;
     }
 
     // Getters and Setters
