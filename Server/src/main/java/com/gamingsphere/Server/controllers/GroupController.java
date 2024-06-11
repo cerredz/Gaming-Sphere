@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gamingsphere.Server.models.Group;
 import com.gamingsphere.Server.service.GroupService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/group")
 public class GroupController {
@@ -37,7 +39,7 @@ public class GroupController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Void> addGroup(@RequestBody Group group) {
+    public ResponseEntity<Void> addGroup(@RequestBody @Valid Group group) {
         groupService.addGroup(group);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }

@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gamingsphere.Server.models.User;
 import com.gamingsphere.Server.service.UserService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
@@ -31,7 +33,7 @@ public class UserController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Void> addUser(@RequestBody User user) {
+    public ResponseEntity<Void> addUser(@RequestBody @Valid User user) {
         userService.addUser(user);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
@@ -48,7 +50,7 @@ public class UserController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity deleteUser(@PathVariable String id) {
+    public ResponseEntity<Void> deleteUser(@PathVariable String id) {
         userService.deleteUser(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }

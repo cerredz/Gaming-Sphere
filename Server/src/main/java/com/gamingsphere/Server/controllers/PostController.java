@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gamingsphere.Server.models.Post;
 import com.gamingsphere.Server.service.PostService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/post")
 public class PostController {
@@ -29,7 +31,7 @@ public class PostController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Void> addPost(Post post) {
+    public ResponseEntity<Void> addPost(@RequestBody @Valid Post post) {
         postService.addPost(post);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
