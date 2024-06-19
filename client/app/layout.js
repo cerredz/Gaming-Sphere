@@ -1,9 +1,12 @@
-import { Inter } from "next/font/google";
+"use client";
 import "./globals.css";
+import { StoreProvider } from "@/config/StoreProvider";
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
+    <StoreProvider>
+      <html lang="en">
+        <body className="font-primary">{children}</body>
+      </html>
+    </StoreProvider>
   );
 }
